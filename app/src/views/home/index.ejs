@@ -2,14 +2,28 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/home/index.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/css/home/index.css" />
+
+  <script src="/js/home/index.js" defer></script>
+
+  <title>To Do List</title>
 </head>
 
+
 <body>
-    hi
+    <div class="todo-box">
+        <h2>To Do List</h2>
+        <div class="input-row">
+            <input id="list" type="text" placeholder="할 일 입력" />
+            <button class="add-btn">
+                <img src="/images/home/plus-solid.svg" alt="추가" />
+            </button>
+        </div>
+    </div>
+
 </body>
 
 </html>
