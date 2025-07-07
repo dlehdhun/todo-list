@@ -1,9 +1,8 @@
 "use strict";
 
-const { json, application } = require("express");
 
 const list = document.querySelector("#list"),
-loginBtn = document.querySelector("button");
+    loginBtn = document.querySelector("button");
 
 loginBtn.addEventListener("click", listAdd)
 
@@ -12,7 +11,7 @@ function listAdd() {
         list: list.value
     };
 
-    fetch("/index", {
+    fetch("/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
