@@ -2,45 +2,45 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/css/home/index.css" />
+  <link rel="stylesheet" href="/css/home/index.css" />
 
-    <script src="/js/home/index.js" defer></script>
+  <script src="/js/home/index.js" defer></script>
 
-    <title>To Do List</title>
+  <title>To Do List</title>
 </head>
 
 
 <body>
-    <div class="todo-box">
-        <h2>To Do List</h2>
-        <div class="input-row">
-            <input id="list" type="text" placeholder="할 일 입력" />
-            <button class="add-btn">
-                <img src="/images/home/plus-solid.svg" alt="추가" />
-            </button>
-        </div>
-        <br>
-        <!-- 출력 영역 -->
-        <div class="todo-item">
-  <div class="todo-left">
-    <input type="checkbox" class="todo-check" />
-    <span class="todo-text">할 일 1</span>
-  </div>
-  <div class="todo-right">
-    <button class="edit-btn">
-      <img src="/images/home/pen-solid.svg" alt="수정" />
-    </button>
-    <button class="delete-btn">
-      <img src="/images/home/trash-can.svg" alt="삭제" />
-    </button>
-  </div>
-</div>
-
-
+  <div class="todo-box">
+    <h2>To Do List</h2>
+    <div class="input-row">
+      <input id="todoInput" type="text" placeholder="할 일 입력" > 
+      <!-- onkeydown="keyCodeCheck()"c -->
+      <button class="add-btn">
+        <img src="/images/home/plus-solid.svg" alt="추가">
+      </button>
     </div>
+    <!-- <br>
+    <div class="todo-item">
+      <div class="todo-left">
+        <input type="checkbox" class="todo-check" />
+        <span class="todo-text">할 일 1</span>
+      </div>
+      <div class="todo-right">
+        <button class="edit-btn">
+          <img src="/images/home/pen-solid.svg" alt="수정" />
+        </button>
+        <button class="delete-btn">
+          <img src="/images/home/trash-can.svg" alt="삭제" />
+        </button>
+      </div>
+    </div> -->
+
+
+  </div>
 
 </body>
 

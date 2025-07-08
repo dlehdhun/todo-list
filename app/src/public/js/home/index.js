@@ -1,14 +1,22 @@
 "use strict";
 
 
-const list = document.querySelector("#list"),
+const toDo = document.querySelector("#todoInput"),
     loginBtn = document.querySelector("button");
 
 loginBtn.addEventListener("click", listAdd)
 
+// 엔터 누르면
+// function keyCodeCheck () {
+//     if (window.event.keyCode === 13) {
+
+//     }
+// }
+
+// 버튼 누르면
 function listAdd() {
     const req = {
-        list: list.value
+        toDo: toDo.value,  
     };
 
     fetch("/", {
@@ -18,4 +26,6 @@ function listAdd() {
         },
         body: JSON.stringify(req),
     })
-}
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+};

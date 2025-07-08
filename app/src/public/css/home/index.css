@@ -35,6 +35,8 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 4px;
 }
 
 /* 입력창 */
@@ -43,7 +45,6 @@ body {
   padding: 4px 8px;
   font-size: 13px;
   border: none;
-  border-bottom: 1px solid #bbb;
   background: transparent;
   outline: none;
 }
@@ -76,6 +77,8 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-top: 12px;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 4px;
 }
 
 .todo-text {
@@ -91,8 +94,6 @@ body {
   align-items: center;
   gap: 6px;
   flex: 1;
-  border-bottom: 1px solid #bbb; /* ⬅ 밑줄 추가 */
-  padding-bottom: 4px;
 }
 
 /* 오른쪽: 수정 + 삭제 버튼 */

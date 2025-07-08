@@ -7,8 +7,10 @@ const output = {
 
 const process = {
     home: (req, res) => {
-        console.log(req.body);
-        // res.render("home/index")
+        const toDo = req.body.toDo;
+        return res.json({
+            toDo: toDo,
+        })
     }
 }
 
