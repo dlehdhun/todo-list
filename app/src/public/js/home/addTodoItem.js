@@ -30,7 +30,7 @@ function add(req, todoBox, toDo) {
             toDo.value = "";
         })
         .catch((err) => {
-            console.error("toDo 추가 중 w에러 발생");
+            console.error("toDo 추가 중 에러 발생");
         });
 }
 
