@@ -10,7 +10,7 @@ const toDo = document.querySelector("#todoInput"),
     checkbox = document.querySelector(".todo-check");
 
 // 취소선 표시
-todoBox.addEventListener("change", function (event) {
+todoBox.addEventListener("change", (event) => {
     const checkbox = event.target.closest(".todo-check");
     if (checkbox) {
         const todoItem = checkbox.closest(".todo-item");
@@ -22,6 +22,24 @@ todoBox.addEventListener("change", function (event) {
             text.style.textDecoration = "none";
             text.style.color = "";
         }
+    }
+});
+
+// 수정 및 삭제
+todoBox.addEventListener("click", (event) => {
+    const editBtn = event.target.closest(".edit-btn");
+    const removeBtn = event.target.closest(".delete-btn");
+    if (editBtn) {
+        const todoItem = checkbox.closest(".todo-item");
+        const text = checkbox.closest(".todo-text");
+        const exitText = checkbox.closest(".edit-input");
+        if (exitText.style.display= "none") {
+            exitText.style.display= ""
+        }
+    }
+    if (removeBtn) {
+        const todoItem = removeBtn.closest(".todo-item");
+        todoItem.remove()
     }
 });
 
