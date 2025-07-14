@@ -1,6 +1,6 @@
 "use strict";
 
-function add(req, todoBox, toDo) {
+function handleAddTodo(req, todoBox, toDo) {
     fetch("/", {
         method: "POST",
         headers: {
@@ -35,4 +35,4 @@ function add(req, todoBox, toDo) {
         });
 }
 
-export { add };
+export { handleAddTodo };
