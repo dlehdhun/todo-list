@@ -2,12 +2,10 @@
 
 import { add } from './addTodoItem.js';
 
+
 const toDo = document.querySelector("#todoInput"),
     loginBtn = document.querySelector("button"),
-    todoBox = document.querySelector(".todo-box"),
-    edit = document.querySelector("edit-btn"),
-    remove = document.querySelector("delete-btn"),
-    checkbox = document.querySelector(".todo-check");
+    todoBox = document.querySelector(".todo-box");
 
 // 취소선 표시
 todoBox.addEventListener("change", (event) => {
@@ -27,14 +25,28 @@ todoBox.addEventListener("change", (event) => {
 
 // 수정 및 삭제
 todoBox.addEventListener("click", (event) => {
-    const editBtn = event.target.closest(".edit-btn");
+        const editBtn = event.target.closest(".edit-btn");
     const removeBtn = event.target.closest(".delete-btn");
     if (editBtn) {
-        const todoItem = checkbox.closest(".todo-item");
-        const text = checkbox.closest(".todo-text");
-        const exitText = checkbox.closest(".edit-input");
-        if (exitText.style.display= "none") {
-            exitText.style.display= ""
+        const todoItem = editBtn.closest(".todo-item");
+        const text = todoItem.querySelector(".todo-text");
+        const exitText = todoItem.querySelector(".edit-input");
+        const img = editBtn.querySelector("img");
+
+        if (exitText.style.display === "none") {
+            exitText.style.display = "block"
+            text.style.display = "none"
+
+            img.src = "/images/home/check-solid.svg"
+            img.alt = "확인"
+        } else {
+            exitText.style.display = "none"
+            text.style.display = "block"
+
+            text.textContent = exitText.value; 
+
+            img.src = "/images/home/pen-solid.svg"
+            img.alt = "수정"
         }
     }
     if (removeBtn) {
