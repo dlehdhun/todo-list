@@ -12,6 +12,16 @@ class TodoStorage {
             });
         });
     }
+
+    static async save(todo) {
+        return new Promise((resolve, reject) => {
+            const query = "INSERT INTO todo(name) VALUES(?);";
+            db.query(query, [todo.name], (err) => {
+                if (err) reject(`${err}`);
+                else resolve({ success: true });
+            });
+        });
+    }
 }
 
 module.exports = TodoStorage;

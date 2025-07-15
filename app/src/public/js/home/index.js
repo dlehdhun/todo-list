@@ -11,7 +11,7 @@ const toDo = document.querySelector("#todoInput"),
 
 function handleAdd(event) {
     const req = {
-        toDo: toDo.value,
+        name: toDo.value,
     };
     if (event.key === "Enter" || event.type === "click") {
         if (toDo.value === "") {

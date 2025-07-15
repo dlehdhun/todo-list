@@ -1,7 +1,7 @@
 "use strict";
 
 function handleAddTodo(req, todoBox, toDo) {
-    fetch("/", {
+    fetch("/todo", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

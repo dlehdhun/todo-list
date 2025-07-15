@@ -16,12 +16,13 @@ const output = {
 };
 
 const process = {
-    home: (req, res) => {
-        // const todo = new User(req.body);
-        const toDo = req.body.toDo;
-        return res.json({
-            toDo: toDo,
-        })
+    addTodo: async (req, res) => {
+        const todoInstance = new Todo(req.body);
+        const response = await todoInstance.add();
+        return  res.json({
+            success: true,
+            toDo: req.body.name,
+        });
     }
 }
 

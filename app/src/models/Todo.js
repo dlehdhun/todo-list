@@ -17,6 +17,16 @@ class Todo {
         }
     }
 
+    async add() {
+        const client = this.body;
+        try {
+        const response = await TodoStorage.save(client);
+        return response;
+        } catch (err) {
+            return {success : false, err};
+        }
+    }
+
 }
 
 module.exports = Todo;
