@@ -27,6 +27,26 @@ class Todo {
         }
     }
 
+    async edit() {
+        const client = this.body;
+        try {
+        const response = await TodoStorage.edit(client);
+        return response;
+        } catch (err) {
+            return {success : false, err};
+        }
+    }
+
+    async remove() {
+        const client = this.body;
+        try {
+        const response = await TodoStorage.remove(client);
+        return response;
+        } catch (err) {
+            return {success : false, err};
+        }
+    }
+
 }
 
 module.exports = Todo;

@@ -22,6 +22,26 @@ class TodoStorage {
             });
         });
     }
+
+    static async edit(todo) {
+        return new Promise((resolve, reject) => {
+            const query = "UPDATE todo SET name = (?) WHERE id = (?);";
+            db.query(query, [todo.name, todo.id], (err) => {
+                if (err) reject(`${err}`);
+                else resolve({ success: true });
+            });
+        });
+    }
+
+    static async remove(todo) {
+        return new Promise((resolve, reject) => {
+            const query = "DELETE FROM todo WHERE id = (?);";
+            db.query(query, [todo.id], (err) => {
+                if (err) reject(`${err}`);
+                else resolve({ success: true });
+            });
+        });
+    }
 }
 
 module.exports = TodoStorage;

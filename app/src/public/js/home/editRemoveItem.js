@@ -1,7 +1,7 @@
 "use strict";
 
 function handleEditOrRemove(event) {
-    
+
     const editBtn = event.target.closest(".edit-btn");
     const removeBtn = event.target.closest(".delete-btn");
     if (editBtn) {
@@ -10,6 +10,7 @@ function handleEditOrRemove(event) {
         const exitText = todoItem.querySelector(".edit-input");
         const checkbox = todoItem.querySelector(".todo-check");
         const img = editBtn.querySelector("img");
+        const id = todoItem.dataset.id;
 
         if (exitText.style.display === "none") {
             exitText.style.display = "block"
@@ -29,7 +30,8 @@ function handleEditOrRemove(event) {
             img.alt = "수정"
 
             const req = {
-                toDo: exitText.value,
+                id: id,
+                name: text.textContent,
             };
 
             fetch(`/todos/${id}`, {
@@ -37,33 +39,45 @@ function handleEditOrRemove(event) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                    body: JSON.stringify(req),
-                })
-                    .then((res) => res.json())
-                    .then((res) => console.log(res))
-                    .catch((err) => {
-                        console.error("toDo 수정, 삭제 중 에러 발생");
-                    });
-        }
-    }
-    if (removeBtn) {
-        const todoItem = removeBtn.closest(".todo-item");
-        todoItem.remove()
-
-        fetch("/", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
                 body: JSON.stringify(req),
             })
                 .then((res) => res.json())
                 .then((res) => {
-
+                    //     if (res.success) {
+                    //     alert("수정 완료!");
+                    // }
                 })
                 .catch((err) => {
                     console.error("toDo 수정, 삭제 중 에러 발생");
                 });
+        }
+    }
+    if (removeBtn) {
+        const todoItem = removeBtn.closest(".todo-item");
+        const id = todoItem.dataset.id;
+
+
+        const req = {
+            id: id,
+        };
+        
+        fetch(`/todos/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(req),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                // if (res.success) {
+                //     if (item) todoItem.remove();
+                //     alert("삭제되었습니다.");
+                // }
+            })
+            .catch((err) => {
+                console.error("toDo 수정, 삭제 중 에러 발생");
+            });
     }
 }
 

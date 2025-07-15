@@ -23,7 +23,26 @@ const process = {
             success: true,
             toDo: req.body.name,
         });
-    }
+    },
+
+    editTodo: async (req, res) => {
+        const todoInstance = new Todo(req.body);
+        const response = await todoInstance.edit();
+        return  res.json({
+            success: true,
+            id: req.body.id,
+            name: req.body.name,
+        });
+    },
+
+    removeTodo: async (req, res) => {
+        const todoInstance = new Todo(req.body);
+        const response = await todoInstance.remove();
+        return  res.json({
+            success: true,
+            id: req.body.id,
+        });
+    },
 }
 
 module.exports = {
