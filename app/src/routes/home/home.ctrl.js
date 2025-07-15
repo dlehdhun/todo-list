@@ -1,16 +1,14 @@
 "use strict";
 
-const User = require("../../models/User");
+const Todo = require("../../models/Todo");
 
 const output = {
     home: async (req, res) => {
-        const user = new User();
-        const response = await user.getAllTodos();
-
-        console.log(response.todos);  // 확인용
+        const todoInstance  = new Todo();
+        const response = await todoInstance.getAllTodos();
 
         if (response.success) {
-            res.render("home/index", { todos: response.todos });
+            res.render("home/index", { todos: response.todos || []});
         } else {
             res.status(500).send("To-do 데이터를 가져오는 중 오류가 발생했습니다.");
         }

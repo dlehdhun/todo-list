@@ -1,17 +1,17 @@
 "use strict";
 
-const UserStorage = require("./UserStorage");
+const TodoStorage = require("./TodoStorage");
 
-class User {
+class Todo {
     constructor(body) {
         this.body = body;
     }
 
     async getAllTodos() {
         try {
-            const todos = await UserStorage.getAllTodos();
+            const todos = await TodoStorage.getAllTodos();
             return { success: true, todos };
-            
+
         } catch (err) {
             return { success: false, err };
         }
@@ -19,4 +19,4 @@ class User {
 
 }
 
-module.exports = User;
+module.exports = Todo;

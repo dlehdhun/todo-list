@@ -2,7 +2,7 @@
 
 const db = require("../config/db");
 
-class Userstorage {
+class TodoStorage {
     static getAllTodos() {
         return new Promise((resolve, reject) => {
             const query = "SELECT * FROM todo";
@@ -14,4 +14,4 @@ class Userstorage {
     }
 }
 
-module.exports = Userstorage;
+module.exports = TodoStorage;
