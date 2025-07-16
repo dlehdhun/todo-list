@@ -19,9 +19,13 @@ const process = {
     addTodo: async (req, res) => {
         const todoInstance = new Todo(req.body);
         const response = await todoInstance.add();
+
+        const responses = response.response;
+
         return  res.json({
             success: true,
-            toDo: req.body.name,
+            id: responses.id,
+            name: responses.name,
         });
     },
 

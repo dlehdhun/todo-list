@@ -16,9 +16,23 @@ class TodoStorage {
     static async save(todo) {
         return new Promise((resolve, reject) => {
             const query = "INSERT INTO todo(name) VALUES(?);";
-            db.query(query, [todo.name], (err) => {
+            db.query(query, [todo.name], (err, result) => {
                 if (err) reject(`${err}`);
-                else resolve({ success: true });
+                
+                const insertedId = result.insertId;
+
+                const selectquery = "SELECT id, name FROM todo WHERE id = ?;"
+                db.query(selectquery, [insertedId], (err2, data) => {
+                    if (err2) reject(`${err2}`);
+
+                    const datas = data[0];
+                    resolve({
+                        success: true,
+                        id: datas.id,
+                        name: datas.name,
+                    })
+
+                });
             });
         });
     }

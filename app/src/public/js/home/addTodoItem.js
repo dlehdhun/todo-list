@@ -11,11 +11,11 @@ function handleAddTodo(req, todoBox, toDo) {
         .then((res) => res.json())
         .then((res) => {
             const html = `
-                <div class="todo-item">
+                <div class="todo-item" data-id="${res.id}">
                 <div class="todo-left">
                     <input type="checkbox" class="todo-check" />
-                    <span class="todo-text" style="display:block">${res.toDo}</span>
-                    <input class="edit-input" value="${res.toDo}" style="display:none" />
+                    <span class="todo-text" style="display:block">${res.name}</span>
+                    <input class="edit-input" value="${res.name}" style="display:none" />
                 </div>
                 <div class="todo-right">
                     <button class="edit-btn">

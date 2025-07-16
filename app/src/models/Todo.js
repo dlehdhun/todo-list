@@ -20,8 +20,10 @@ class Todo {
     async add() {
         const client = this.body;
         try {
-        const response = await TodoStorage.save(client);
-        return response;
+            const response = await TodoStorage.save(client);
+
+            return { success: true, response };
+
         } catch (err) {
             return {success : false, err};
         }
