@@ -56,6 +56,7 @@ function handleEditOrRemove(event) {
         const todoItem = removeBtn.closest(".todo-item");
         const id = todoItem.dataset.id;
 
+        todoItem.remove();
 
         const req = {
             id: id,
@@ -71,8 +72,7 @@ function handleEditOrRemove(event) {
             .then((res) => res.json())
             .then((res) => {
                 // if (res.success) {
-                //     if (item) todoItem.remove();
-                //     alert("삭제되었습니다.");
+                //     alert("삭제 완료!");
                 // }
             })
             .catch((err) => {
