@@ -11,51 +11,41 @@ class Todo {
         try {
             const todos = await TodoStorage.getAllTodos();
             return { success: true, todos };
-
         } catch (err) {
             return { success: false, err };
         }
     }
 
     async add() {
-        const client = this.body;
         try {
-            const response = await TodoStorage.save(client);
-
+            const response = await TodoStorage.save(this.body);
             return { success: true, response };
-
         } catch (err) {
-            return {success : false, err};
+            return { success: false, err };
         }
     }
 
-    async edit() {
-        const client = this.body;
+   async edit() {
         try {
-        const response = await TodoStorage.edit(client);
-        return response;
+            return await TodoStorage.edit(this.body);
         } catch (err) {
-            return {success : false, err};
+            return { success: false, err };
         }
     }
 
     async check() {
-        const client = this.body;
         try {
-        const response = await TodoStorage.check(client);
-        return response;
+            return await TodoStorage.check(this.body);
         } catch (err) {
-            return {success : false, err};
+            return { success: false, err };
         }
     }
 
     async remove() {
-        const client = this.body;
         try {
-        const response = await TodoStorage.remove(client);
-        return response;
+            return await TodoStorage.remove(this.body);
         } catch (err) {
-            return {success : false, err};
+            return { success: false, err };
         }
     }
 

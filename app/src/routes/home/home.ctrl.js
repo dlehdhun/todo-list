@@ -32,31 +32,35 @@ const process = {
     editTodo: async (req, res) => {
         const todoInstance = new Todo(req.body);
         const response = await todoInstance.edit();
-        //console.log(req.body)
+        const body = req.body;
+
         return  res.json({
             success: true,
-            id: req.body.id,
-            name: req.body.name,
+            id: body.id,
+            name: body.name,
         });
     },
 
     togglecheck: async (req, res) => {
         const todoInstance = new Todo(req.body);
-        const response = await todoInstance.check();
-        //console.log(req.body)
+        await todoInstance.check();
+        const body = req.body;
+
         return  res.json({
             success: true,
-            id: req.body.id,
-            check: req.body.check,
+            id: body.id,
+            check: body.check,
         });
     },
 
     removeTodo: async (req, res) => {
         const todoInstance = new Todo(req.body);
-        const response = await todoInstance.remove();
+        await todoInstance.remove();
+        const body = req.body;
+        
         return  res.json({
             success: true,
-            id: req.body.id,
+            id: body.id,
         });
     },
 }

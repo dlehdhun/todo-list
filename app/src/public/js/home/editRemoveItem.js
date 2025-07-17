@@ -19,6 +19,11 @@ function handleEditOrRemove(event) {
 
             img.src = "/images/home/check-solid.svg"
             img.alt = "확인"
+            
+            const value =exitText.value;
+            exitText.focus();
+            exitText.value = "";
+            exitText.value = value;
         } else {
             exitText.style.display = "none"
             text.style.display = "block"
