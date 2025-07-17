@@ -18,49 +18,47 @@ const output = {
 const process = {
     addTodo: async (req, res) => {
         const todoInstance = new Todo(req.body);
-        const response = await todoInstance.add();
-
-        const responses = response.response;
+        const { response } = await todoInstance.add();
 
         return  res.json({
             success: true,
-            id: responses.id,
-            name: responses.name,
+            id: response.id,
+            name: response.name,
         });
     },
 
     editTodo: async (req, res) => {
         const todoInstance = new Todo(req.body);
-        const response = await todoInstance.edit();
-        const body = req.body;
+        await todoInstance.edit();
+        const { id, name } = req.body;
 
-        return  res.json({
+        return res.json({
             success: true,
-            id: body.id,
-            name: body.name,
+            id,
+            name,
         });
     },
 
     togglecheck: async (req, res) => {
         const todoInstance = new Todo(req.body);
         await todoInstance.check();
-        const body = req.body;
+        const { id, check } = req.body;
 
         return  res.json({
             success: true,
-            id: body.id,
-            check: body.check,
+            id,
+            check,
         });
     },
 
     removeTodo: async (req, res) => {
         const todoInstance = new Todo(req.body);
         await todoInstance.remove();
-        const body = req.body;
+        const { id } = req.body;
         
         return  res.json({
             success: true,
-            id: body.id,
+            id,
         });
     },
 }
