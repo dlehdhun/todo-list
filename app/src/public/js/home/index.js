@@ -1,6 +1,6 @@
 "use strict";
 
-import { handleAddTodo } from './addTodoItem.js';
+import { handleAddTodo } from './addItem.js';
 import { handleEdit } from './editItem.js';
 import { handleRemove } from './RemoveItem.js';
 import { handleCompleteToggle } from './toggleCompleteStyle.js';
