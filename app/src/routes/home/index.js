@@ -13,7 +13,7 @@ router.post("/todo", ctrl.process.addTodo);
 
 // 할 일, 밑줄 수정
 router.patch("/todos/:id", ctrl.process.editTodo);
-router.patch("/todos/:id/check", ctrl.process.togglecheck);
+router.patch("/todos/:id/check", ctrl.process.toggleCheck);
 
 // 할 일 삭제
 router.delete("/todos/:id", ctrl.process.removeTodo);

@@ -39,7 +39,7 @@ const process = {
         });
     },
 
-    togglecheck: async (req, res) => {
+    toggleCheck: async (req, res) => {
         const todoInstance = new Todo(req.body);
         await todoInstance.check();
         const { id, check } = req.body;
