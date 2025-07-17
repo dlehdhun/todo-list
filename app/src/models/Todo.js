@@ -39,6 +39,16 @@ class Todo {
         }
     }
 
+    async check() {
+        const client = this.body;
+        try {
+        const response = await TodoStorage.check(client);
+        return response;
+        } catch (err) {
+            return {success : false, err};
+        }
+    }
+
     async remove() {
         const client = this.body;
         try {

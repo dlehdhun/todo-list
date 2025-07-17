@@ -15,8 +15,10 @@ class TodoStorage {
 
     static async save(todo) {
         return new Promise((resolve, reject) => {
-            const query = "INSERT INTO todo(name) VALUES(?);";
-            db.query(query, [todo.name], (err, result) => {
+            const query = "INSERT INTO todo(name, check) VALUES(?,?);";
+            const defaultcheck = todo.is_completed || false;
+
+            db.query(query, [todo.name, defaultcheck], (err, result) => {
                 if (err) reject(`${err}`);
                 
                 const insertedId = result.insertId;
@@ -30,6 +32,7 @@ class TodoStorage {
                         success: true,
                         id: datas.id,
                         name: datas.name,
+                        check: datas.check,
                     })
 
                 });
@@ -44,7 +47,17 @@ class TodoStorage {
                 if (err) reject(`${err}`);
                 else resolve({ success: true });
             });
-        });
+        }); 
+    }
+
+    static async check(todo) {
+        return new Promise((resolve, reject) => {
+            const query = "UPDATE todo SET `check` = ? WHERE id = ?;";
+            db.query(query, [todo.check, todo.id], (err) => {
+                if (err) reject(`${err}`);
+                else resolve({ success: true });
+            });
+        }); 
     }
 
     static async remove(todo) {

@@ -25,7 +25,7 @@
     <% todos.forEach(todo=> { %>
       <div class="todo-item" data-id="<%= todo.id %>">
         <div class="todo-left">
-          <input type="checkbox" class="todo-check" />
+          <input type="checkbox" class="todo-check" <%= todo.check === "true" ? "checked" : "" %>/>
           <span class="todo-text" style="display:block">
             <%= todo.name %>
           </span>

@@ -20,11 +20,28 @@ function handleAdd(event) {
             handleAddTodo(req, todoBox, toDo);
         }
     }
-
 }
+
+function applyStrikethrough() {
+    const todoItems = document.querySelectorAll(".todo-item");
+
+    todoItems.forEach((item) => {
+        const checkbox = item.querySelector(".todo-check");
+        const text = item.querySelector(".todo-text");
+
+        if (checkbox && checkbox.checked) {
+            text.style.textDecoration = "line-through";
+            text.style.color = "#797979";
+        }
+    });
+}
+
+
+
 
 toDo.addEventListener("keydown", handleAdd);
 loginBtn.addEventListener("click", handleAdd);
 
 todoBox.addEventListener("click", handleEditOrRemove);      // 수정/삭제
 todoBox.addEventListener("change", handleCompleteToggle);   // 체크완료 시 밑줄 표시
+document.addEventListener("DOMContentLoaded", applyStrikethrough());  // 처음에 취소선 표시
