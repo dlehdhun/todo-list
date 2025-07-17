@@ -1,9 +1,9 @@
 "use strict";
 
 import { handleAddTodo } from './addTodoItem.js';
-import { handleEditOrRemove } from './editRemoveItem.js';
+import { handleEdit } from './editItem.js';
+import { handleRemove } from './RemoveItem.js';
 import { handleCompleteToggle } from './toggleCompleteStyle.js';
-
 
 const toDo = document.querySelector("#todoInput"),
     loginBtn = document.querySelector("button"),
@@ -36,12 +36,16 @@ function applyStrikethrough() {
     });
 }
 
-
-
+document.addEventListener("DOMContentLoaded", applyStrikethrough);  // 처음에 취소선 표시
 
 toDo.addEventListener("keydown", handleAdd);
 loginBtn.addEventListener("click", handleAdd);
 
-todoBox.addEventListener("click", handleEditOrRemove);      // 수정/삭제
+todoBox.addEventListener("click", (event) => {
+    if (event.target.closest(".edit-btn")) {
+        handleEdit(event);
+    } else if (event.target.closest(".delete-btn")) {
+        handleRemove(event);
+    }
+});
 todoBox.addEventListener("change", handleCompleteToggle);   // 체크완료 시 밑줄 표시
-document.addEventListener("DOMContentLoaded", applyStrikethrough());  // 처음에 취소선 표시
